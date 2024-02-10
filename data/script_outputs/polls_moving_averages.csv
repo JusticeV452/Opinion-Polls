@@ -1,4 +1,4 @@
-Polling agency,Date published,Sample size,Margin of Error,NDA,I.N.D.I.A.,Others,Lead,Days to Election,Polling Agency Quality Score,Sample Size Score,Margin of Error Score,Recency Score,Overall Poll Quality,WMA_NDA_Rounded,WMA_INDIA_Rounded,WMA_Others_Rounded
+Polling agency,Date published,Sample size,Margin of Error,NDA,I.N.D.I.A.,Others,Lead,Days to Election,Polling Agency Quality Score,Sample Size Score,Margin of Error Score,Recency Score,Overall Poll Quality,NDA_Moving_Average,INDIA_Moving_Average,Others_Moving_Average
 Times Now-ETG,2023-08-15,110662,3.0,320.532659933,169.247138047,60.0,NDA,291,0.8965096925,0.8870463121783876,0.5,0.5,0.7152413167785163,317.0,167.0,59.0
 India Today-CVoter,2023-08-15,160438,35.0,315.532659933,187.247138047,54.0,NDA,291,0.8958345560000001,1.2285626072041165,-10.166666666666666,0.5,0.2841940878279017,315.0,171.0,58.0
 India TV-CNX,2023-10-15,54250,3.0,324.532659933,166.247138047,56.0,NDA,230,1.075848133,0.5,0.5,0.7096219931271478,0.7278108305008593,317.0,169.0,57.0

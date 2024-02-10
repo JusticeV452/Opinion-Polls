@@ -29,7 +29,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='Margin_Calculation_Data' name='textscan.0cl7xmw0dz463l1grmyck1d8jej6'>
-            <connection class='textscan' directory='/Users/dwaipayanbanerjee/Dropbox (Personal)/Coding Workshop/Opinion Polls/data' filename='Margin_Calculation_Data.csv' password='' server='' />
+            <connection class='textscan' directory='/Users/dwaipayanbanerjee/Dropbox (Personal)/Coding Workshop/Opinion Polls/data/constant_initial_data' filename='Margin_Calculation_Data.csv' password='' server='' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.0cl7xmw0dz463l1grmyck1d8jej6' name='Margin_Calculation_Data.csv' table='[Margin_Calculation_Data#csv]' type='table'>
@@ -481,8 +481,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='750' minheight='750' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='20' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='19' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='100000' id='24' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='23' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='49000' id='3' is-fixed='true' name='Vote Leans' w='82400' x='800' y='1000'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -617,7 +617,7 @@
           </highlight>
         </viewpoint>
       </viewpoints>
-      <active id='9' />
+      <active id='-1' />
       <simple-id uuid='{C8F52B02-6568-4F4F-8219-B3000A9F7B26}' />
     </window>
   </windows>

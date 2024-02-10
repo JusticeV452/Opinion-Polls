@@ -1,13 +1,7 @@
 import pandas as pd
 
-def convert_polls_moving_averages(input_csv_path, output_xlsx_path):
-    """
-    Converts polling data from a CSV file to an Excel file with a specific format.
+def convert_polls_moving_averages(input_csv_path, output_csv_path):
 
-    Parameters:
-    input_csv_path (str): Path to the input CSV file containing polling data.
-    output_xlsx_path (str): Path where the output Excel file will be saved.
-    """   
     # Read the input CSV file
     polls_moving_averages_df = pd.read_csv(input_csv_path)
     
@@ -26,11 +20,11 @@ def convert_polls_moving_averages(input_csv_path, output_xlsx_path):
     new_df['Seat #'] = list(range(1, nda_rows + others_rows + india_rows + 1))
     new_df['Party'] = ['Others'] * others_rows + ['I.N.D.I.A.'] * india_rows + ['NDA'] * nda_rows
     
-    # Save the DataFrame as an Excel (.xlsx) file
-    new_df.to_excel(output_xlsx_path, index=False)
+    # Save the DataFrame as a CSV file
+    new_df.to_csv(output_csv_path, index=False)
 
-# Example usage
-if __name__ == "__main__":
-    input_csv_path = "data/Polls Moving Averages.csv"
-    output_xlsx_path = "data/Converted_Polls_Moving_Averages.xlsx"
-    convert_polls_moving_averages(input_csv_path, output_xlsx_path)
+def prepare_moving_average_data():
+    # Convert the polls moving averages data to a format that can be used for the arc visualization
+    input_csv_path = "data/script_outputs/polls_moving_averages.csv"
+    output_csv_path = "data/script_outputs/converted_polls_moving_averages.csv"
+    convert_polls_moving_averages(input_csv_path, output_csv_path)
