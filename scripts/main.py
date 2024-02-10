@@ -2,7 +2,7 @@ import os
 from wikipedia_scraping_processing import get_and_process_tables
 from clean_and_combine_state_data_from_wikipedia import clean_and_combine_state_data
 from process_state_data import process_state_data
-from generate_seat_projections_2 import generate_seat_projections
+from generate_seat_projections import generate_seat_projections
 from prepare_moving_average_data_for_arc_visualization import prepare_moving_average_data
 
 def clear_terminal():
