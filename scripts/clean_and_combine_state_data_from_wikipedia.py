@@ -2,6 +2,19 @@ import pandas as pd
 import os
 
 def clean_and_combine_state_data():
+    """
+    This function loads multiple CSV files from a directory, cleans the data, combines all the data into a single DataFrame, 
+    and then saves the cleaned, combined data to a new CSV file.
+
+    The cleaning process includes:
+    - Converting the 'Date published' column to datetime type
+    - Extracting and trimming state names from the 'File Paths' column
+    - Moving the 'States' column to the third position
+    - Converting the 'Lead' column values to uppercase
+    - Replacing "I.N.D.I.A" with "I.N.D.I.A." in the 'Lead' column
+    - Dropping rows where 'NDA', 'I.N.D.I.A.', and 'Others' columns are all empty
+    - Standardizing the 'Date published' column format to YYYY-MM-DD
+    """
     # Load the CSV files
     directory = 'data/wikipedia_scrape/'
     csv_files = [f for f in os.listdir(directory) if f.endswith(').csv')]

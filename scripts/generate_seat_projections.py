@@ -114,5 +114,3 @@ def generate_seat_projections():
     
     # At the end of generate_seat_projections function:
     print(f'Seat Projections Generated, Saved to {output_csv_filename}')
-
-

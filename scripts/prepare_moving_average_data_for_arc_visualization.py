@@ -6,14 +6,14 @@ def convert_polls_moving_averages(input_csv_path, output_csv_path):
     polls_moving_averages_df = pd.read_csv(input_csv_path)
     
     # Extract the last row and relevant columns
-    last_row = polls_moving_averages_df.iloc[-1][['NDA_Moving_Average', 'INDIA_Moving_Average', 'Others_Moving_Average']]
+    last_row = polls_moving_averages_df.iloc[-1][['NDA_Moving_Average', 'I.N.D.I.A._Moving_Average', 'Others_Moving_Average']]
     
     # Create an empty DataFrame to store the new data
     new_df = pd.DataFrame(columns=['Seat #', 'Party'])
     
     # Calculate the number of rows for each category based on the last row data
     nda_rows = int(last_row['NDA_Moving_Average'])
-    india_rows = int(last_row['INDIA_Moving_Average'])
+    india_rows = int(last_row['I.N.D.I.A._Moving_Average'])
     others_rows = int(last_row['Others_Moving_Average'])
     
     # Populate the DataFrame
