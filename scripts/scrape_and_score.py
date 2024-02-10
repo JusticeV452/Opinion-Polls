@@ -55,21 +55,57 @@ def save_table_as_csv(state_data, title, folder_name="data/wikipedia_scrape"):
     state_data.to_csv(directory, index=False)
 
 def get_and_process_tables():
-    html = wp.page("Opinion_polling_for_the_next_Indian_general_election").html().encode("UTF-8")
-    soup = BeautifulSoup(html, 'html.parser')
-    tables = soup.findAll("table", {"class": "wikitable"})
-    table_titles = [table.find('caption').get_text().strip() if table.find('caption') else "No Title" for table in tables]
+    # Fetch the HTML content using Wikipedia library
+    page = wp.page("Opinion_polling_for_the_next_Indian_general_election")
+    html_content = page.html()
+    soup = BeautifulSoup(html_content, 'html.parser')
 
-    
-    for table, title in zip(tables, table_titles):
-        if title != "No Title":
-            state_data = pd.read_html(StringIO(str(table)), header=1)[0]
-            state_data = state_data.apply(lambda x: x.map(replace_range_with_mean))
-            state_data['Date published'] = state_data['Date published'].str.replace(r'\[\d+\]', '', regex=True)
-            
-            if 'Sample size' in state_data.columns:
-                state_data['Sample size'] = state_data['Sample size'].str.replace('[^\d]', '', regex=True).astype(int)
-            save_table_as_csv(state_data, title)
+    # Sections of interest identified from the Wikipedia page
+    sections_of_interest = [
+        "Vote Share Projections",  # From the section ID obtained earlier
+        "Seat Projections",  # From the section ID obtained earlier
+    ]
+
+    # Additional state and UT sections based on the standard naming convention observed
+    states_and_uts = [
+        "Andaman and Nicobar Islands (01)", "Andhra Pradesh (25)", "Arunachal Pradesh (02)",
+        "Assam (14)", "Bihar (40)", "Chandigarh (01)", "Chhattisgarh (11)",
+        "Dadra and Nagar Haveli and Daman and Diu (02)", "Delhi (07)", "Goa (02)",
+        "Gujarat (26)", "Haryana (10)", "Himachal Pradesh (04)", "Jammu and Kashmir (05)",
+        "Jharkhand (14)", "Karnataka (28)", "Kerala (20)", "Ladakh (01)",
+        "Lakshadweep (01)", "Madhya Pradesh (29)", "Maharashtra (48)", "Manipur (02)",
+        "Meghalaya (02)", "Mizoram (01)", "Nagaland (01)", "Odisha (21)",
+        "Puducherry (01)", "Punjab (13)", "Rajasthan (25)", "Sikkim (01)",
+        "Tamil Nadu (39)", "Telangana (17)", "Tripura (02)", "Uttar Pradesh (80)",
+        "Uttarakhand (05)", "West Bengal (42)"
+    ]
+
+    sections_of_interest.extend(states_and_uts)  # Combine the lists for processing
+
+    for section in sections_of_interest:
+        # Try to find a heading with a matching id
+        heading = soup.find(id=section.replace(" ", "_").replace("&", "and"))
+        if heading:
+            table = heading.find_next("table", {"class": "wikitable"})
+        else:
+            # If no heading was found, try to find a table with a matching caption
+            tables = soup.find_all('table', {'class': 'wikitable'})
+            for t in tables:
+                caption = t.find('caption')
+                if caption and caption.get_text().strip() == section:
+                    table = t
+                    break
+            else:
+                continue  # No matching table was found, skip to the next section
+
+        # Process the found table
+        df = pd.read_html(StringIO(str(table)), header=1)[0]
+        df = df.apply(lambda x: x.map(replace_range_with_mean))
+        df['Date published'] = df['Date published'].str.replace(r'\[\d+\]', '', regex=True)
+        if 'Sample size' in df.columns:
+            df['Sample size'] = df['Sample size'].str.replace(r'\[\d+\]', '', regex=True).str.replace(',', '').astype(int)                
+        # Save the processed table to a CSV file
+        save_table_as_csv(df, section)
 
 def generate_seat_projections():
 
