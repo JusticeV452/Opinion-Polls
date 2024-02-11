@@ -61,4 +61,3 @@ def get_and_process_tables():
         save_table_as_csv(df, section)
         # Inside the for loop of get_and_process_tables, after save_table_as_csv:
         print(f"Processed and saved table: {section}")
-

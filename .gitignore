@@ -1,4 +1,9 @@
 data/.DS_Store
-.DS_Store
-data/.DS_Store
 scripts/.DS_Store
+.vscode
+.gitignore
+scripts/pycache/calculate_poll_quality.cpython-311.pyc
+scripts/pycache/combine_state_data_from_wikipedia.cpython-311.pyc
+scripts/pycache/generate_seat_projections.cpython-311.pyc
+scripts/pycache/prepare_moving_average_for_visualization.cpython-311.pyc
+scripts/pycache/wikipedia_scraping_processing.cpython-311.pyc
