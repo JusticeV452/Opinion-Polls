@@ -7,3 +7,5 @@ scripts/pycache/combine_state_data_from_wikipedia.cpython-311.pyc
 scripts/pycache/generate_seat_projections.cpython-311.pyc
 scripts/pycache/prepare_moving_average_for_visualization.cpython-311.pyc
 scripts/pycache/wikipedia_scraping_processing.cpython-311.pyc
+venv
+__pycache__
